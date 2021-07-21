@@ -1,32 +1,46 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Door : MonoBehaviour {
 
-	// TODO: Create variables to reference the game objects we need access to
-	// Declare a GameObject named 'leftDoor' and assign the 'Left_Door' game object to the field in Unity
-	// Declare a GameObject named 'rightDoor' and assign the 'Right_Door' game object to the field in Unity
+    // TODO: Create variables to reference the game objects we need access to
+    // Declare a GameObject named 'leftDoor' and assign the 'Left_Door' game object to the field in Unity
+    // Declare a GameObject named 'rightDoor' and assign the 'Right_Door' game object to the field in Unity
+    public GameObject leftDoor;
+    public GameObject rightDoor;
 
-	// TODO: Create variables to reference the components we need access to
-	// Declare an AudioSource named 'audioSource' and get a reference to the audio source in Start()
+    // TODO: Create variables to reference the components we need access to
+    // Declare an AudioSource named 'audioSource' and get a reference to the audio source in Start()
+    private AudioSource audioSource;
+    private AudioClip doorOpening;
+    private AudioClip doorLocked;
 
-	// TODO: Create variables to track the gameplay states
-	// Declare a boolean named 'locked' to track if the door has been unlocked and initialize it to 'true'
-	// Declare a boolean named 'opening' to track if the door is opening and initialize it to 'false'
+    // TODO: Create variables to track the gameplay states
+    // Declare a boolean named 'locked' to track if the door has been unlocked and initialize it to 'true'
+    // Declare a boolean named 'opening' to track if the door is opening and initialize it to 'false'
+    private bool locked = true;
+    private bool opening = false;
 
-	// TODO: Create variables to hold rotations used when animating the door opening
-	// Declare a Quaternion named 'leftDoorStartRotation' to hold the start rotation of the 'Left_Door' game object
-	// Declare a Quaternion named "leftDoorEndRotation" to hold the end rotation of the 'Left_Door' game object
-	// Declare a Quaternion named 'rightDoorStartRotation' to hold the start rotation of the 'Right_Door' game object
-	// Declare a Quaternion named 'rightDoorEndRotation' to hold the end rotation of the 'Right_Door' game object
+    // TODO: Create variables to hold rotations used when animating the door opening
+    // Declare a Quaternion named 'leftDoorStartRotation' to hold the start rotation of the 'Left_Door' game object
+    // Declare a Quaternion named "leftDoorEndRotation" to hold the end rotation of the 'Left_Door' game object
+    // Declare a Quaternion named 'rightDoorStartRotation' to hold the start rotation of the 'Right_Door' game object
+    // Declare a Quaternion named 'rightDoorEndRotation' to hold the end rotation of the 'Right_Door' game object
+    private Quaternion leftDoorStartRotation;
+    private Quaternion leftDoorEndRotation;
 
-	// TODO: Create variables to control the speed of the interpolation when animating the door opening
-	// Declare a float named 'timer' to track the Quaternion.Slerp() interpolation and initialize it to for example '0f'
-	// Declare a float named 'rotationTime' to set the Quaternion.Slerp() interpolation speed and initialize it to for example '10f'
+    private Quaternion rightDoorStartRotation;
+    private Quaternion rightDoorEndRotation;
 
+    // TODO: Create variables to control the speed of the interpolation when animating the door opening
+    // Declare a float named 'timer' to track the Quaternion.Slerp() interpolation and initialize it to for example '0f'
+    // Declare a float named 'rotationTime' to set the Quaternion.Slerp() interpolation speed and initialize it to for example '10f'
+    private float timer= 0.0f;
+    private float rotationTime = 10f;
 
-	void Start () {
+    void Start () {
 		// TODO: Get a reference to the audio source
 		// Use GetComponent<>() to get a reference to the AudioSource component and assign it to the 'audioSource'
 

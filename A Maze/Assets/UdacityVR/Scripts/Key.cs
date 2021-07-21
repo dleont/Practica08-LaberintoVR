@@ -20,7 +20,6 @@ public class Key : MonoBehaviour {
         }
 	}
 
-
 	public void OnKeyClicked () {
         /// Called when the 'Key' game object is clicked
         /// - Unlocks the door (handled by the Door class)
