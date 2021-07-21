@@ -14,8 +14,8 @@ public class Door : MonoBehaviour {
     // TODO: Create variables to reference the components we need access to
     // Declare an AudioSource named 'audioSource' and get a reference to the audio source in Start()
     private AudioSource audioSource;
-    private AudioClip doorOpening;
-    private AudioClip doorLocked;
+    public AudioClip doorOpening;
+    public AudioClip doorLocked;
 
     // TODO: Create variables to track the gameplay states
     // Declare a boolean named 'locked' to track if the door has been unlocked and initialize it to 'true'
